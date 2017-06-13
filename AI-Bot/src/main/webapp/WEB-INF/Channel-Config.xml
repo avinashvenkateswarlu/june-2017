@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channels>
+
+<channel name="skype for business">
+    <urls>
+        <authentication>https://chnsfbweb.hcl.com/WebTicket/oauthtoken</authentication>
+        <application>https://chnsfbweb.hcl.com/ucwa/oauth/v1/applications</application>
+    </urls>
+    
+    <credentials>
+        <username>venkateswarlu.a@hcl.com</username>
+        <password>kutre123***</password>
+    </credentials>
+</channel>
+
+<channel name="web">
+</channel>
+
+</channels>

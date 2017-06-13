@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ To define a pattern or entity enclose it with ()
+
+(@entity#weekdays:day) here 
+        @entity tells it is a entity
+        #weekdays tells entity name is weekdays
+        :day tells that store this value in day variable in ((HashMap<String,Object>)session.getattribute("params")).get("day")
+
+(@pattern#employee_id:pt1) here 
+        @pattern tells it is a pattern.
+        #employee_id tells pattern name is employee_id in pattern classifier.xml.
+        :pt1 tells that store this value in day variable in ((HashMap<String,Object>)session.getattribute("params")).get("pt1")
+-->
+
+<Intent-Mapping>
+    
+    <Intent name="HolidayFinder" priority=500000>
+        <User-Says>Is (@entity#weekdays:day) is holiday for (@pattern#employee_id:pt1).</User-Says>
+        <User-Says>Was (@entity#weekdays:day) is holiday for (@pattern#employee_id:pt1).</User-Says>
+        
+        <prompts>
+            <day>Please enter a working day?</day>
+            <day>Which day you want to know about?</day>
+            
+            <pt1>Please enter your employee id?</pt1>
+            <pt1>What is your employee id?</pt1>
+            <pt1>Can I know your employee id?</pt1>
+            <pt1>Can you tell me your employee id?</pt1>
+        </prompts>
+        
+        
+        <!--<Context-In name="login"></Context-In>-->
+        
+        <!--<process channel="">
+            <code>
+                <imports></imports>
+                <logic></logic>
+                <functions></functions>
+            </code>
+            <file>
+            </file>
+        </process>-->
+        
+        <process>
+            <code>
+                <imports>
+                    import com.hcl.ai_bot.common.IntentProcessor;
+                    import javax.servlet.http.HttpSession;
+                    import org.json.JSONObject;
+                </imports>
+                <logic>
+                    return displayText();
+                </logic>
+                <functions>
+                    private String displayText()
+                    {
+                        return "processed";
+                    }
+                </functions>
+            </code>
+            <!--<file path-type="class" class="com.hcl.testing.KnowHolidayForEmp" />-->
+        </process>
+    </Intent>
+    
+    <Intent name="WorkingDayFinder" priority=500000>
+        <User-Says>Is (@entity#weekdays:day) is working day for (@pattern#employee_id:pt1).</User-Says>
+        
+        <Context-In name="login"></Context-In>
+                
+        <!--<process channel="">
+            <code>
+                <imports></imports>
+                <logic></logic>
+                <functions></functions>
+            </code>
+            <file>
+            </file>
+        </process>-->
+        
+        <process>
+            <!--<code>
+                <imports></imports>
+                <logic></logic>
+                <functions></functions>
+            </code>-->
+            <file path-type="class" class="com.hcl.testing.KnowHolidayForEmp" />
+        </process>
+    </Intent>
+    
+    
+    <Intent name="EmployeeFinder" priority=500000>
+        <User-Says>Is (@pattern#employee_id:pt1) is an employee of hcl.</User-Says>
+        <User-Says>HCL has (@pattern#employee_id:pt1) as an employee.</User-Says>
+        <User-Says>employee (@pattern#employee_id:pt1).</User-Says>
+        <User-Says>about (@pattern#employee_id:pt1).</User-Says>
+        <User-Says>what is your employee id?</User-Says>
+        
+        <!--<Context-In name="login"></Context-In>-->
+                
+        <!--<process channel="">
+            <code>
+                <imports></imports>
+                <logic></logic>
+                <functions></functions>
+            </code>
+            <file>
+            </file>
+        </process>-->
+        
+        
+        <process>
+            <file path-type="class" class="com.hcl.testing.KnowHolidayForEmp" />
+            <!--<code>
+                <imports></imports>
+                <logic>
+                    System.out.println("success");
+                </logic>
+                <functions></functions>
+            </code>-->
+        </process>
+    </Intent>
+</Intent-Mapping>

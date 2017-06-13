@@ -1,0 +1,153 @@
+{
+  "templates": [
+    "Is @weekdays:day isa holiday for  @pattern-employee_id:pt1"
+  ],
+  "userSays": [
+    {
+      "id": "fdd070e0-68d6-4d14-8f1c-f48503207f5a",
+      "data": [
+        {
+          "text": "Is @weekdays:day isa holiday for  @pattern-employee_id:pt1"
+        }
+      ],
+      "isTemplate": true,
+      "count": 0,
+      "updated": 1496665057
+    }
+  ],
+  
+  "name": "holiday",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "required": true,
+          "dataType": "@weekdays",
+          "name": "day",
+          "value": "$day",
+          "prompts": [],
+          "isList": false
+        },
+        {
+          "required": true,
+          "dataType": "@pattern-employee_id",
+          "name": "pt1",
+          "value": "$pt1",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "success"
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "cortanaCommand": {
+    "navigateOrService": "NAVIGATE",
+    "target": ""
+  },
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1496725374,
+  "fallbackIntent": false,
+  "events": []
+}
+
+---------
+{
+  "id": "ebdfdd95-c2ac-45aa-8254-fc68b0179364",
+  "timestamp": "2017-06-07T08:59:50.656Z",
+  "lang": "en",
+  "result": {
+    "source": "agent",
+    "resolvedQuery": "hi!",
+    "speech": "One more time?",
+    "action": "input.unknown",
+    "parameters": {},
+    "metadata": {
+      "inputContexts": [],
+      "outputContexts": [],
+      "intentName": "Default Fallback Intent",
+      "intentId": "fc069451-1f59-473b-a5cc-37df055e4caf",
+      "webhookUsed": "false",
+      "webhookForSlotFillingUsed": "false",
+      "contexts": []
+    },
+    "score": 1
+  },
+  "status": {
+    "code": 200,
+    "errorType": "success"
+  },
+  "sessionId": "123456"
+}
+
+---------
+Sample Request
+{
+  query: "is monday is holiday for 1jud",
+  lang : "en",
+  sessionId : "123456",
+  resetContexts : true,
+  contexts : [
+  {
+      name : "login",
+      parameters : {
+      	name : "sam"
+  		}
+   }
+    ],
+  entities : [
+    {
+      name : "pattern-employee_id",
+      entries : [
+      {
+      	value : "1jud",
+      	synonyms : ["1jud"]
+      }
+      ]
+    }
+    ]
+}
+
+------------
+Sample response
+{
+"id": "b03742f1-b2b4-403d-94e1-6f85eb0a4739",
+"timestamp": "2017-06-07T09:20:56.517Z",
+"lang": "en",
+"result": {
+"source": "agent",
+"resolvedQuery": "is monday is holiday for 1jud",
+"speech": "success",
+"action": "HolidayFinder",
+"parameters": {
+"day": "monday",
+"pt1": "1jud"
+},
+"metadata": {
+"inputContexts": [],
+"outputContexts": [],
+"intentName": "HolidayFinder",
+"intentId": "8dddb04a-c558-4827-80c6-7d51e65daea2",
+"webhookUsed": "false",
+"webhookForSlotFillingUsed": "false",
+"contexts": [
+  "login"
+],
+},
+"score": 0.84176909954438
+},
+"status": {
+"code": 200,
+"errorType": "success"
+},
+"sessionId": "123456"
+}

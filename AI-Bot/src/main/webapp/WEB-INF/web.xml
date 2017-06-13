@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <!--Setting context parameters -->
+    <context-param>
+        <param-name>api.ai access token</param-name>
+        <param-value>cee4479895804f749060b5bc21b7fd9e</param-value>
+    </context-param>
+    <context-param>
+        <param-name>api.ai base-url</param-name>
+        <param-value>https://api.api.ai/v1/</param-value>
+    </context-param>
+    <context-param>
+        <param-name>host name</param-name>
+        <param-value>localhost:8080/AI-Bot/ </param-value>
+    </context-param>
+    <!--End of setting context parameters -->
+    <listener>
+        <listener-class>com.hcl.ai_bot.common.AppstartupLogic</listener-class>
+    </listener>
+    <listener>
+        <description>HttpSessionListener</description>
+        <listener-class>com.hcl.ai_bot.process.NewClientSetUp</listener-class>
+    </listener>
+    <servlet>
+        <servlet-name>tester</servlet-name>
+        <servlet-class>com.hcl.ai_bot.common.tester</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProcessMessage</servlet-name>
+        <servlet-class>com.hcl.ai_bot.process.ProcessMessage</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>tester</servlet-name>
+        <url-pattern>/tester</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcessMessage</servlet-name>
+        <url-pattern>/process-message</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
